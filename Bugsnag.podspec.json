@@ -29,8 +29,8 @@
     "APPLICATION_EXTENSION_API_ONLY": "YES"
   },
   "dependencies": {
-    "KSCrash/RecordingAdvanced": [
-      "= 1.11.2"
+    "KSCrash/Recording": [
+      "= 1.12.0"
     ]
   }
 }

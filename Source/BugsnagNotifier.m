@@ -24,7 +24,7 @@
 // THE SOFTWARE.
 //
 
-#import <KSCrash/KSCrashAdvanced.h>
+#import <KSCrash/KSCrash.h>
 #import <KSCrash/KSCrashC.h>
 
 #import "Bugsnag.h"
@@ -154,7 +154,7 @@ void BSSerializeJSONDictionary(NSDictionary *dictionary, char **destination) {
     [KSCrash sharedInstance].onCrash = &BSSerializeDataCrashHandler;
 
     if (!configuration.autoNotify) {
-        kscrash_setHandlingCrashTypes(KSCrashTypeUserReported);
+        kscrash_setMonitoring(KSCrashMonitorTypeUserReported);
     }
     [[KSCrash sharedInstance] install];
 
@@ -239,6 +239,7 @@ void BSSerializeJSONDictionary(NSDictionary *dictionary, char **destination) {
                                            reason:reportMessage
                                          language:NULL lineOfCode:@""
                                        stackTrace:@[]
+                                    logAllThreads:YES // TODO expose API to disable this
                                  terminateProgram:NO];
     // Restore metaData to pre-crash state.
     [self.metaDataLock unlock];
